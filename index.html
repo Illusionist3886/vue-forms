@@ -1,0 +1,73 @@
+<!-- 
+    Author: Delowar Hossain
+    Author URI: https://github.com/illusionist3886
+    License: GLWTPL
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Password Validation</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <style>
+        body {
+            background: skyblue;
+            color: darkblue;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto" id="app">
+                <vue-form v-for="formmodel in formModels" :formmodel="formmodel"></vue-form>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="x/template" id="form-template">
+        <div class="form-group">
+            <label v-bind:for="formmodel.name">{{ formmodel.label }}</label>
+            <input :type="formmodel.type ? formmodel.type : 'text'" :name="formmodel.name" id="formmodel.name" class="form-control" :placeholder="formmodel.placeholder">
+        </div>
+    </script>
+    <script src="js/vue2.6.js"></script>
+    <script>
+        Vue.component('vue-form',{
+            template: "#form-template",
+            props: ['formmodel']
+        })
+        new Vue({
+            el: '#app',
+            data : {
+                userpass : '',
+                formModels : [
+                    {
+                        label:"First Name",
+                        name: 'f_name',
+                        placeholder: 'First Name'
+                        
+                    },
+                    {
+                        label:"Last Name",
+                        name: 'l_name',
+                        placeholder: 'Last Name'
+                        
+                    },
+                    {
+                        label:"Password",
+                        name: 'password',
+                        placeholder: 'Password',
+                        type: 'password'
+                        
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
