@@ -33,7 +33,7 @@
 
         <div class="form-group" v-if="formmodel.type==null">
             <label v-bind:for="formmodel.name">{{ formmodel.label }}</label>
-            <input :type="formmodel.type ? formmodel.type : 'text'" :name="formmodel.name" :id="formmodel.name" class="form-control" :placeholder="formmodel.placeholder">
+            <input :type="formmodel.type ? formmodel.type : 'text'" :name="formmodel.name" :id="formmodel.name" class="form-control" :placeholder="formmodel.placeholder ? formmodel.placeholder : formmodel.label">
         </div>
 
 
@@ -41,7 +41,7 @@
 
         <div class="form-group" v-else-if="formmodel.type=='password'">
             <label v-bind:for="formmodel.name">{{ formmodel.label }}</label>
-            <input :type="formmodel.type ? formmodel.type : 'text'" :name="formmodel.name" :id="formmodel.name" class="form-control" :placeholder="formmodel.placeholder">
+            <input :type="formmodel.type ? formmodel.type : 'text'" :name="formmodel.name" :id="formmodel.name" class="form-control" :placeholder="formmodel.placeholder ? formmodel.placeholder : formmodel.label">
         </div>
 
 
@@ -87,13 +87,11 @@
                     {
                         label:"Last Name",
                         name: 'l_name',
-                        placeholder: 'Last Name'
                         
                     },
                     {
                         label:"Password",
                         name: 'password',
-                        placeholder: 'Password',
                         type: 'password'
                         
                     },
