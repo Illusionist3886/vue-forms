@@ -46,6 +46,13 @@
                 <label :for="option.value">{{ option.label }}</label>
             </span>
         </div>
+        <div class="form-group" v-else-if="formmodel.type=='select'">
+            <label v-bind:for="formmodel.name">{{ formmodel.label }}</label> <br>
+            <select :name="formmodel.name" :id="formmodel.name" class="form-control"> 
+                <option value="">{{ formmodel.label }}</option>
+                <option v-for="option in formmodel.options" :value="option.value">{{ option.label }}</option>
+            </select>
+        </div>
 
     </script>
     <script src="js/vue2.6.js"></script>
@@ -90,6 +97,22 @@
                             {
                                 value: 'female',
                                 label: 'Female'
+                            }
+                        ]
+                        
+                    },
+                    {
+                        label:"Choose Course",
+                        name: 'course',
+                        type: 'select',
+                        options : [
+                            {
+                                value: 'desgin',
+                                label: 'Web Design Fundamental'
+                            },
+                            {
+                                value: 'development',
+                                label: 'Web Development'
                             }
                         ]
                         
